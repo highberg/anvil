@@ -1,0 +1,9 @@
+ANVIL DATA COMPRESSION APPLICATION
+
+The application has 2 different pages: Encode and Decode. The Encode page is used for the encoding process, and the Decode page is used for the decoding process.
+
+On each page, there are buttons to select the target file path and the save file path. No file operations can be performed until these paths are selected.
+
+After the target file path and save path are selected, the start operation button becomes active. When the start button is pressed, the file operation begins. During this process, a progress indicator replaces the start button.
+
+After the file operation is finished, a message box is shown to the user indicating whether the operation was successful or unsuccessful, and the progress indicator is replaced by the start operation button so that another file operation can be performed.
