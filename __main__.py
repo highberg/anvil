@@ -18,6 +18,7 @@ from PyQt6.QtWidgets import (
     QScrollArea,
 )
 from PyQt6.QtCore import QThread, pyqtSignal
+from PyQt6.QtGui import QIcon
 
 translations = {
     "en": {
@@ -110,7 +111,6 @@ class AboutDialog(QDialog):
     def __init__(self, title, text, parent=None):
         super().__init__(parent)
         self.setWindowTitle(title)
-        self.setFixedSize(600, 400)
         scroll_area = QScrollArea(self)
         scroll_area.setWidgetResizable(True)
         content_widget = QWidget()
@@ -188,24 +188,27 @@ class FileWidget(QWidget):
         self.worker.start()
 
     def on_worker_finished(self, error):
-        self.progress_bar.hide()
-        self.start_button.show()
-        self.file_button.setEnabled(True)
-        self.save_button.setEnabled(True)
         if error:
             QMessageBox.critical(
                 self, t("error_message_title"), f"{t('error_message_body')}{error}"
             )
         else:
-            QMessageBox.information(
-                self, t("success_message_title"), t("success_message_body")
-            )
+            dlg = QMessageBox(self)
+            dlg.setWindowTitle(t("success_message_title"))
+            dlg.setText(t("success_message_body"))
+            dlg.exec()
+
+        self.progress_bar.hide()
+        self.start_button.show()
+        self.file_button.setEnabled(True)
+        self.save_button.setEnabled(True)
 
 
 class AnvilApp(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle(t("window_title"))
+        self.setWindowIcon(QIcon("anvil.ico"))
         self.setFixedSize(500, 200)
         self.read_help_files()
         self.set_menu()
