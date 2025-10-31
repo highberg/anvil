@@ -79,8 +79,8 @@ class Lz77:
             while True:
                 bytes_ = file.read(3)
                 
-                # if the file ends, stop reading
-                if not bytes_:
+                # if the file ends, or is corrupted, stop reading
+                if (len(bytes_) != 3):
                     break
                 
                 # get distance, length and next byte from
