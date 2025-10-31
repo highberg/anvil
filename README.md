@@ -2,4 +2,4 @@
 
 A lossless text compression algorithm using Huffman and LZ77 algorithms with a GUI
 
-![Anvil GUI](https://user-images.githubusercontent.com/48856944/227793569-21fc0434-0d8b-4eaa-8ee4-0e46a1d1feba.png)
+![Anvil GUI](https://github.com/user-attachments/assets/ebed1685-8322-4f0b-aae7-4063bbe6e273)
